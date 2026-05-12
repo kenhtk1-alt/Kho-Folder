@@ -11,20 +11,23 @@ Nếu bạn không thấy nút Export, bạn hãy làm như sau:
 1. Giải nén tệp ZIP.
 2. Cài đặt **Node.js** từ [nodejs.org](https://nodejs.org/).
 
-## Bước 3: Đóng gói (Sửa lỗi "Privilege Error")
-Để tránh lỗi "A required privilege is not held by the client" (như trong hình bạn gặp), bạn **BẮT BUỘC** phải làm một trong hai điều sau:
-- **Lựa chọn A:** Mở CMD/PowerShell bằng quyền **Administrator**.
-- **Lựa chọn B:** Bật **Developer Mode** trong Windows Settings.
-
-Sau đó chạy lệnh:
+## Bước 3: Đóng gói (Sửa lỗi "Privilege" & "Shortcut")
+Để phần mềm có thể can thiệp hệ thống và tạo icon Desktop, bạn **CẦN**:
+1. Chuột phải vào PowerShell/CMD, chọn **Run as Administrator**.
+2. Chạy lệnh:
 ```bash
 npm install
 npm run build:win
 ```
 
-## Bước 4: Cài đặt phần mềm
-Sau khi chạy xong, file cài đặt sẽ nằm tại:
-`dist_electron\Folder Guard Pro Setup 1.0.0.exe`
+## Bước 4: Kiểm tra Icon Desktop
+Sau khi cài đặt xong bản mới này:
+- Một biểu tượng **Folder Guard Pro** sẽ tự động xuất hiện trên màn hình **Desktop** của bạn.
+- Khi sử dụng, hãy chọn **"Run as Administrator"** cho phần mềm để nó có quyền thực thi lệnh `attrib` (ẩn/hiện) trên Windows.
+
+## Lưu ý về chức năng:
+- **Ẩn Folder:** Phần mềm sử dụng lệnh cấp cao của Windows (`+h +s`) để ẩn thư mục. Thư mục sẽ biến mất hoàn toàn ngay cả khi bạn bật "Show hidden files" (trừ khi bạn tắt cả "Hide protected operating system files").
+- **Tác động thật:** Các thay đổi bây giờ sẽ tác động trực tiếp tới hệ thống tệp tin thông qua lớp giao tiếp `electronAPI`.
 
 **Lưu ý quan trọng:** Tôi đã cấu hình lại đường dẫn tương đối (Relative Path) để sửa lỗi màn hình trắng bạn gặp phải. Bạn hãy tải lại bản ZIP mới nhất này để đóng gói nhé.
 

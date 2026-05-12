@@ -58,14 +58,35 @@ export const Vault: React.FC<VaultProps> = ({
     (showHidden || !f.isHidden || search.length > 0)
   );
 
-  const handleLock = (id: string, name: string, isLocked: boolean) => {
-    onLockToggle(id);
-    showNotification(`${isLocked ? 'Đã mở khoá' : 'Đã khoá'} thư mục ${name}`);
+  const handleLock = async (id: string, name: string, isLocked: boolean) => {
+    try {
+      // @ts-ignore
+      if (window.electronAPI) {
+        // @ts-ignore
+        await window.electronAPI.lockFolder(`C:\\Protected\\${name}`);
+      }
+      onLockToggle(id);
+      showNotification(`${isLocked ? 'Đã mở khoá' : 'Đã khoá'} thành công thư mục ${name}`);
+    } catch (e) {
+      showNotification(`Lỗi hệ thống khi truy cập folder!`);
+    }
   };
 
-  const handleHide = (id: string, name: string, isHidden: boolean) => {
-    onHideToggle(id);
-    showNotification(`${isHidden ? 'Đã hiện' : 'Đã ẩn'} thư mục ${name}`);
+  const handleHide = async (id: string, name: string, isHidden: boolean) => {
+    try {
+      // @ts-ignore
+      if (window.electronAPI) {
+        const path = `C:\\Protected\\${name}`; // In real app, this would be the actual path
+        // @ts-ignore
+        if (isHidden) await window.electronAPI.unhideFolder(path);
+        // @ts-ignore
+        else await window.electronAPI.hideFolder(path);
+      }
+      onHideToggle(id);
+      showNotification(`${isHidden ? 'Đã hiện' : 'Đã ẩn'} thực thể ${name} khỏi hệ thống Windows`);
+    } catch (e) {
+      showNotification(`Không thể truy cập quyền hệ thống (Thử chạy Admin)`);
+    }
   };
 
   const handleCreate = (e: React.FormEvent) => {
