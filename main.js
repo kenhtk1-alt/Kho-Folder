@@ -19,7 +19,8 @@ function createWindow() {
 
   // In production, load the index.html from the dist folder
   if (app.isPackaged) {
-    win.loadFile(path.join(__dirname, 'dist/index.html'));
+    const indexPath = path.join(__dirname, 'dist', 'index.html');
+    win.loadFile(indexPath).catch(e => console.error('Failed to load index.html:', e));
   } else {
     // In development, load from the local dev server
     win.loadURL('http://localhost:3000');

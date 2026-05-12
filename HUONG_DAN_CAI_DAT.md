@@ -4,29 +4,29 @@ Chào bạn! Rất tiếc vì lỗi bạn gặp phải. Tôi đã cập nhật t
 
 ## Bước 1: Cách tải mã nguồn (Export to ZIP)
 Nếu bạn không thấy nút Export, bạn hãy làm như sau:
-1. Nhìn vào menu **Settings** (biểu tượng bánh răng) ở phía trên bên phải giao diện AI Studio.
-2. Chọn **Export to ZIP**. Tệp này sẽ chứa toàn bộ mã nguồn bao gồm cả cấu hình đóng gói mới nhất.
+1. Nhìn vào menu **Settings** (biểu tượng bánh răng) hoặc biểu tượng **Ba dấu chấm** ở góc trên cùng bên phải.
+2. Chọn **Export to ZIP**. Tệp này chứa toàn bộ mã nguồn đã sửa lỗi.
 
-## Bước 2: Chuẩn bị trên máy tính của bạn
-1. Giải nén tệp ZIP đã tải.
-2. Đảm bảo máy tính đã cài đặt **Node.js** (tải tại [nodejs.org](https://nodejs.org/)).
+## Bước 2: Chuẩn bị trên máy tính
+1. Giải nén tệp ZIP.
+2. Cài đặt **Node.js** từ [nodejs.org](https://nodejs.org/).
 
-## Bước 3: Cài đặt và Đóng gói
-Mở Terminal (CMD hoặc PowerShell) tại thư mục đã giải nén và chạy các lệnh sau:
+## Bước 3: Đóng gói (Sửa lỗi "Privilege Error")
+Để tránh lỗi "A required privilege is not held by the client" (như trong hình bạn gặp), bạn **BẮT BUỘC** phải làm một trong hai điều sau:
+- **Lựa chọn A:** Mở CMD/PowerShell bằng quyền **Administrator**.
+- **Lựa chọn B:** Bật **Developer Mode** trong Windows Settings.
 
+Sau đó chạy lệnh:
 ```bash
-# 1. Cài đặt các thư viện cần thiết
 npm install
-
-# 2. Tạo bản Build và đóng gói thành file .exe duy nhất
 npm run build:win
 ```
 
-## Bước 4: Kiểm tra kết quả
-Sau khi lệnh chạy xong, bạn vào thư mục **`dist_electron`**. Bạn sẽ thấy file thực thi mới là:
-**`Folder Guard Pro Setup 1.0.0.exe`**
+## Bước 4: Cài đặt phần mềm
+Sau khi chạy xong, file cài đặt sẽ nằm tại:
+`dist_electron\Folder Guard Pro Setup 1.0.0.exe`
 
-Hãy chạy file này để cài đặt lại. Lỗi "Cannot find module index.js" đã được khắc phục triệt để bằng tệp `main.js` mà tôi vừa bổ sung.
+**Lưu ý quan trọng:** Tôi đã cấu hình lại đường dẫn tương đối (Relative Path) để sửa lỗi màn hình trắng bạn gặp phải. Bạn hãy tải lại bản ZIP mới nhất này để đóng gói nhé.
 
 ---
 **Thông tin bổ sung:**
