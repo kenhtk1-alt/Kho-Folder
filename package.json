@@ -1,8 +1,9 @@
 {
   "name": "react-example",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "main.js",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
@@ -14,6 +15,11 @@
   "build": {
     "appId": "com.folderguard.pro",
     "productName": "Folder Guard Pro",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
     "directories": {
       "output": "dist_electron"
     },

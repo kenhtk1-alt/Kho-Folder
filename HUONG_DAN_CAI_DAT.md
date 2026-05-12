@@ -1,35 +1,34 @@
 # Hướng dẫn đóng gói Folder Guard Pro thành file .exe (Windows 10 - 64bit)
 
-Chào bạn! Để biến ứng dụng này thành một phần mềm cài đặt chuyên nghiệp trên máy tính, bạn hãy thực hiện các bước sau trên máy tính của mình:
+Chào bạn! Rất tiếc vì lỗi bạn gặp phải. Tôi đã cập nhật tệp tin `main.js` còn thiếu để ứng dụng có thể khởi chạy chính xác sau khi cài đặt.
 
-## Bước 1: Chuẩn bị môi trường
-1. Tải toàn bộ mã nguồn này về máy tính (Sử dụng tính năng **Export to ZIP** trong menu của AI Studio).
+## Bước 1: Cách tải mã nguồn (Export to ZIP)
+Nếu bạn không thấy nút Export, bạn hãy làm như sau:
+1. Nhìn vào menu **Settings** (biểu tượng bánh răng) ở phía trên bên phải giao diện AI Studio.
+2. Chọn **Export to ZIP**. Tệp này sẽ chứa toàn bộ mã nguồn bao gồm cả cấu hình đóng gói mới nhất.
+
+## Bước 2: Chuẩn bị trên máy tính của bạn
+1. Giải nén tệp ZIP đã tải.
 2. Đảm bảo máy tính đã cài đặt **Node.js** (tải tại [nodejs.org](https://nodejs.org/)).
 
-## Bước 2: Cài đặt thư viện
-Mở Terminal (CMD hoặc PowerShell) tại thư mục chứa mã nguồn và chạy lệnh:
+## Bước 3: Cài đặt và Đóng gói
+Mở Terminal (CMD hoặc PowerShell) tại thư mục đã giải nén và chạy các lệnh sau:
+
 ```bash
+# 1. Cài đặt các thư viện cần thiết
 npm install
-```
 
-## Bước 3: Build ứng dụng Web
-Chạy lệnh để tạo bản phân phối web:
-```bash
-npm run build
-```
-
-## Bước 4: Đóng gói thành file .exe
-Ứng dụng sử dụng **Electron** để chạy trên Windows. Bạn hãy chạy lệnh sau:
-```bash
+# 2. Tạo bản Build và đóng gói thành file .exe duy nhất
 npm run build:win
 ```
-*(Lưu ý: Tôi đã thiết lập sẵn cấu hình Electron trong tệp package.json của bạn)*
 
-## Kết quả
-Sau khi lệnh chạy xong, bạn sẽ thấy thư mục `dist_electron` xuất hiện. Trong đó sẽ có file `Folder_Guard_Pro_Setup_x64.exe` để bạn cài đặt và sử dụng trên Windows 10!
+## Bước 4: Kiểm tra kết quả
+Sau khi lệnh chạy xong, bạn vào thư mục **`dist_electron`**. Bạn sẽ thấy file thực thi mới là:
+**`Folder Guard Pro Setup 1.0.0.exe`**
+
+Hãy chạy file này để cài đặt lại. Lỗi "Cannot find module index.js" đã được khắc phục triệt để bằng tệp `main.js` mà tôi vừa bổ sung.
 
 ---
-**Thông tin phần mềm:**
-- Hệ điều hành: Windows 10 / 11 (64-bit)
-- Kiến trúc: x64
-- Công nghệ: React + Vite + Electron
+**Thông tin bổ sung:**
+- Ứng dụng hiện đã có tệp điều hướng chính (`main.js`).
+- Cấu hình trong `package.json` đã được tối ưu để bao gồm tất cả các thành phần cần thiết vào bản cài đặt.
